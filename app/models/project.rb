@@ -1,4 +1,4 @@
 class Project < ApplicationRecord
-  has_many :tasks
-  has_many :team_members, through: :tasks 
+  has_many :team_member_projects
+  has_many :team_members, through: :team_member_projects
 end

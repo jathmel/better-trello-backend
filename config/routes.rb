@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+  # team_member routes
   namespace :api do
     namespace :v1 do
       get '/team_members' => 'team_members#index'
@@ -6,8 +8,14 @@ Rails.application.routes.draw do
       post 'team_members/create'
       patch 'team_members/update'
       delete 'team_members/destroy'
+      # custom routes
+      get '/team_members/my_projects' => 'team_members#my_projects'
+      get '/team_members/my_tasks' => 'team_members#my_tasks'
+      get '/team_members/my_teams' => 'team_members#my_teams'
     end
   end
+
+  # task routes
   namespace :api do
     namespace :v1 do
       get 'tasks/index'
@@ -17,6 +25,8 @@ Rails.application.routes.draw do
       delete 'tasks/destroy'
     end
   end
+
+  # project routes
   namespace :api do
     namespace :v1 do
       get 'projects/index'
