@@ -1,5 +1,5 @@
 class Api::V1::TeamMembersController < ApplicationController
-  before_action :find_team_member, only: [:show, :update, :destoy, :my_projects :my_teams, :my_tasks]
+  before_action :find_team_member, only: [:show, :update, :destoy, :my_projects, :my_teams, :my_tasks]
 
 
 
@@ -11,6 +11,16 @@ class Api::V1::TeamMembersController < ApplicationController
       render json: @team_member, status: :accepted
     else
       render json: {errors: @team_member.errors.full_messages}, status: :unprocessible_entity
+    end
+  end
+
+  def login
+    debugger
+    @team_member = TeamMember.find_by(email: team_member_params[:email])
+    if @team_member && @team_member.authenticate(team_member_params[:password])
+      render json: @team_member
+    else
+      render json: 'Member Not found'
     end
   end
 
@@ -56,12 +66,14 @@ class Api::V1::TeamMembersController < ApplicationController
 
 
   def create
+    # debugger
     @team_member = TeamMember.new(team_member_params)
     if @team_member.valid?
       @team_member.save
       render json: @team_member
     else
-      render json: {errors.@team_member.errors.full_messages}
+      render json: @team_member.errors.full_messages
+    end
   end
 
   def update

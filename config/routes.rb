@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  # routes for action cable
+  resources :conversations, only: [:index, :create]
+  resources :messages, only: [:create]
+  mount ActionCable.server => '/cable'
+
   # team_member routes
   namespace :api do
     namespace :v1 do
@@ -9,6 +14,7 @@ Rails.application.routes.draw do
       patch 'team_members/update'
       delete 'team_members/destroy'
       # custom routes
+      post '/team_members/login'
       get '/team_members/my_projects' => 'team_members#my_projects'
       get '/team_members/my_tasks' => 'team_members#my_tasks'
       get '/team_members/my_teams' => 'team_members#my_teams'
@@ -29,8 +35,8 @@ Rails.application.routes.draw do
   # project routes
   namespace :api do
     namespace :v1 do
-      get 'projects/index'
-      get 'projects/show'
+      get '/projects' => 'projects#index'
+      get '/projects/:id' => 'projects#show'
       post 'projects/create'
       patch 'projects/update'
       delete 'projects/destroy'
