@@ -5,6 +5,15 @@ Rails.application.routes.draw do
   resources :messages, only: [:create]
   mount ActionCable.server => '/cable'
 
+  # resources :team_member_projects, only: [:create, :update]
+
+  namespace :api do
+    namespace :v1 do
+      post '/team_member_projects/create'
+      patch '/team_member_projects/update' => 'team_member_projects#update'
+    end
+  end
+
   # team_member routes
   namespace :api do
     namespace :v1 do

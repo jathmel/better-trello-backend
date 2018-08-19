@@ -15,7 +15,6 @@ class Api::V1::TeamMembersController < ApplicationController
   end
 
   def login
-    debugger
     @team_member = TeamMember.find_by(email: team_member_params[:email])
     if @team_member && @team_member.authenticate(team_member_params[:password])
       render json: @team_member

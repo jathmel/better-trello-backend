@@ -48,7 +48,6 @@ ActiveRecord::Schema.define(version: 2018_08_17_013628) do
     t.string "description"
     t.date "deadline"
     t.string "priority"
-    t.integer "team_member_project_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -56,6 +55,7 @@ ActiveRecord::Schema.define(version: 2018_08_17_013628) do
   create_table "team_member_projects", force: :cascade do |t|
     t.integer "team_member_id"
     t.integer "project_id"
+    t.integer "task_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
