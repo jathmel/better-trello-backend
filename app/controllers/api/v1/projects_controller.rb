@@ -11,7 +11,9 @@ class Api::V1::ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
+    byebug
     if @project.valid?
+      @project.save
       render json: @project
     else
       render json: @projects.errors
@@ -33,6 +35,6 @@ class Api::V1::ProjectsController < ApplicationController
     @project = Project.find(params[:id])
   end
   def project_params
-    params.require(:project).permit(:name)
+    params.require(:project).permit(:name, :description)
   end
 end

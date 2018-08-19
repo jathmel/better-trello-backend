@@ -24,11 +24,10 @@
 
 # Projects
 
-
-Project.create(name: "Mod5")
-Project.create(name: "Clone AirBnB")
-Project.create(name: "Umbrella")
-Project.create(name: "Pokemon")
+Project.create(name: "Mod5", description: "final froject")
+Project.create(name: "Clone AirBnB", description: "this is a project")
+Project.create(name: "Umbrella", description: "this is a project")
+Project.create(name: "Pokemon", description: "this is a project")
 
 Task.create(category: "Frontend", title: "Login", description: "create a login component to allow users to login to the app.", deadline: '2018-08-11', priority: "high")
 Task.create(category: "Frontend", title: "SignUp", description: "create a component to allow users to register as member for the app.", deadline: '2018-08-11', priority: "high")
