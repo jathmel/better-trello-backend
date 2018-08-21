@@ -1,11 +1,10 @@
 class Api::V1::TeamMembersController < ApplicationController
-  before_action :find_team_member, only: [:show, :update, :destoy, :my_projects, :my_teams, :my_tasks]
+  before_action :find_team_member, only: [:update, :destoy, :my_projects, :my_teams, :my_tasks]
 
 
 
   # returns a team_member
   def show
-    # byebug
     @team_member = TeamMember.find(params[:id])
     if @team_member.valid?
       render json: @team_member, status: :accepted
