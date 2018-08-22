@@ -64,7 +64,7 @@ class Api::V1::TeamMembersController < ApplicationController
 
 
   def create
-    # debugger
+    debugger
     @team_member = TeamMember.new(team_member_params)
     if @team_member.valid?
       @team_member.save
@@ -92,7 +92,7 @@ class Api::V1::TeamMembersController < ApplicationController
 
   # finds a team member base on their email
   def find_team_member
-    @team_member = TeamMember.find_by(eamil: team_member_params[:email])
+    @team_member = TeamMember.find_by(email: team_member_params[:email])
   end
 
   # strong params
