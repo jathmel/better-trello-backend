@@ -1,8 +1,9 @@
 class TeamMemberSerializer < ActiveModel::Serializer
-  attributes :id, :name, :email, :password_digest, :tasks
+  has_many :projects
+  attributes :id, :name, :email, :password_digest, :projects
 
-  def tasks
-    member = TeamMember.find(object.id)
-    member.tasks
-  end
+  # def projects
+  #   member = TeamMember.find(object.id)
+  #   member.projects
+  # end
 end

@@ -64,7 +64,6 @@ class Api::V1::TeamMembersController < ApplicationController
 
 
   def create
-    debugger
     @team_member = TeamMember.new(team_member_params)
     if @team_member.valid?
       @team_member.save

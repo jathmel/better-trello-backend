@@ -14,7 +14,6 @@ class Api::V1::TasksController < ApplicationController
   end
 
   def create
-    byebug
     @task = Task.new(task_params)
     if @task.valid?
       @task.save

@@ -1,4 +1,5 @@
 class TaskSerializer < ActiveModel::Serializer
+  has_one :project
   attributes :id, :title, :description, :priority
 
   # def team_member

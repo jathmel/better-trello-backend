@@ -11,7 +11,6 @@ class Api::V1::ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
-    byebug
     if @project.valid?
       @project.save
       render json: @project
